@@ -44,6 +44,22 @@ class APIController extends Controller
         return response()->json(['success' => true, 'token' => $token, 'user' => $user]);
     }
 
+    public function updateUser(Request $request)
+    {
+        $authUser = JWTAuth::parseToken()->toUser();
+        $authUser->fill($request->all());
+        if($authUser['id'] != $request->all()['id']) {
+            abort(403, 'Unauthorized action');
+        }
+        if($authUser->save()) {
+            return response()->json(['success'=>true, 'user' => $authUser]);
+        } else {
+            return response()->json(['message' => 'Unable to save the data']);
+        }
+
+
+    }
+
     public function user($id) {
 
         $user = User::findOrFail($id);

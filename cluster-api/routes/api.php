@@ -22,5 +22,5 @@ Route::group(['middleware' => 'api'], function () {
 
 Route::group(['middleware' => ['api', 'jwt-auth']], function () {
     Route::get('user/{id}', 'APIController@user');
-    
+    Route::put('user/{id}', 'APIController@updateUser');
 });
