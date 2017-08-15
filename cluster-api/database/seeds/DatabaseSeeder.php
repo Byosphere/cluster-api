@@ -22,5 +22,12 @@ class DatabaseSeeder extends Seeder
             'country' => 'fr',
             'birthdate' => Carbon::createFromDate(1993,1,5)
         ]);
+
+        DB::table('clusters')->insert([
+            'level' => 1,
+            'status' => true,
+            'open' => true,
+            'type' => 1
+        ]);
     }
 }

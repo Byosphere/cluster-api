@@ -16,6 +16,12 @@ class CreateClustersTable extends Migration
         Schema::create('clusters', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->integer('level'); // curiosity, ...
+            $table->boolean('status'); // 'actif', 'inactif'
+            $table->boolean('open');
+            $table->integer('type'); // 'strict' - 'semi strict' - 'free'
+            $table->mediumText('description')->nullable();
+            $table->json('options')->nullable();
         });
     }
 

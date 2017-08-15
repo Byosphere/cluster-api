@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('country');
             $table->date('birthdate');
+            $table->json('options')->nullable();
             $table->integer('cluster_id')->nullable()->unsigned();
             $table->foreign('cluster_id')->references('id')->on('clusters');
             $table->rememberToken();
